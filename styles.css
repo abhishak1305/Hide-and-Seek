@@ -107,16 +107,35 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     display: flex;
     align-items: center;
+    justify-content: center; /* Center content horizontally */
     text-align: center;
-    padding-top: 60px; /* to avoid navbar overlay */
-    background-image: url(images/hide\ and\ seek\ background.png);
-    position: relative; /* Ensure positioning context for absolute elements */
+    padding-top: 60px; /* Prevent navbar overlay */
+    background-image: url("images/hide\ and\ seek\ background.png"); /* Ensure correct path */
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Ensures elements inside can use absolute positioning */
     color: var(--text-color);
+}
+
+/* Responsive Background for Tablets */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain; /* Ensures full image is visible */
+        background-position: center;
+    }
+}
+
+/* Responsive Background for Mobile Devices */
+@media (max-width: 480px) {
+    .hero {
+        background-size: 100% auto; /* Fit width while keeping aspect ratio */
+        background-position: top center; /* Adjust focus to the top */
+        padding-top: 50px; /* Reduce padding for smaller screens */
+    }
 }
 
 .made-in-india-logo {
