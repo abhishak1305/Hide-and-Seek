@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Form</title>
+    <style>
+        body {
+            background: url('contact.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        :root {
+            --primary: #ff6f61;
+            --secondary: #ff3b3f;
+            --background: rgba(255, 255, 255, 0.9);
+            --text: #1f1f1f;
+            --success: #2ecc71;
+            --error: #e74c3c;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 400px;
+            width: 100%;
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .form-input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 5px rgba(255, 59, 63, 0.5);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.875rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <form class="form-container" novalidate>
+        <div class="input-group">
+            <input id="firstName" class="form-input" type="text" required placeholder="First Name">
+        </div>
+        
+        <div class="input-group">
+            <input id="lastName" class="form-input" type="text" required placeholder="Last Name">
+        </div>
+        
+        <div class="input-group">
+            <input id="email" class="form-input" type="email" required placeholder="Email Address">
+        </div>
+        
+        <div class="input-group">
+            <input id="phone" class="form-input" type="tel" required placeholder="Contact Number">
+        </div>
+        
+        <div class="input-group">
+            <textarea id="message" class="form-input" rows="4" required placeholder="Your Message"></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+</body>
+</html>
