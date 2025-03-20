@@ -113,7 +113,8 @@ body {
     justify-content: center; /* Center content horizontally */
     text-align: center;
     padding-top: 60px; /* Prevent navbar overlay */
-    background-image: url("images/hide\ and\ seek\ background\ with\ logo.png"); /* Ensure correct path */
+    background-image: url("images/hide\ and\ seek\ background\ with\ logo.png");
+/*     background-image: url("images/hide\ and\ seek\ background\ with\ logo.png"); /* Ensure correct path */ */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
