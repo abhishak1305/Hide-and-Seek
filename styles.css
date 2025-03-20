@@ -138,16 +138,6 @@ body {
     }
 }
 
-.made-in-india-logo {
-    position: absolute;
-    top: 100px; /* Adjust as needed */
-    left: 20px; /* Adjust as needed */
-    width: 100px; /* Set desired width */
-    height: auto; /* Maintain aspect ratio */
-    z-index: 1; /* Ensure it overlaps the background */
-    opacity: 0.4; /* Adjust the value as needed for desired transparency */
-}
-
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
