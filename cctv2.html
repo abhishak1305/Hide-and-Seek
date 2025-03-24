@@ -10,107 +10,422 @@
     <link rel="canonical" href="https://www.hideandseeksecuritysolutions.com/">
     <title>Hide & Seek Security Solutions | Smart Home Safety</title>
 
-    <!-- Preload critical assets for performance -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style">
-    <link rel="preload" href="styles.css" as="style">
-
-    <!-- External CSS and Fonts -->
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 80px;
+        }
+
+        .hideandseeklogo {
+            height: 120px;
+            width: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .hideandseeklogo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #ff0000;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff0000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links img:hover {
+            transform: rotate(360deg);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+            position: absolute;
+            left: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+
+        main {
+            padding: 100px 0 60px;
+            position: relative;
+        }
+
         .product-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f5f5f5;
-            width: 80%;
-            max-width: 900px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-left: 20%;
-            margin-top: 10%;
-            margin-bottom: 5%;
-            padding: 1%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            transition: transform 0.3s ease;
         }
 
         .product-image {
             flex: 1;
-            padding: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #f1e9e9, #ffffff);
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .product-image img:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .product-details {
             flex: 2;
-            padding: 20px;
+            padding: 40px;
+            background: #fff;
         }
 
         .product-details h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .product-details h3 {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
+            font-size: 22px;
+            color: #ff0000;
+            margin-bottom: 25px;
+            font-weight: 400;
         }
 
         .product-details ul {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .product-details ul li {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 8px;
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 15px;
             position: relative;
-            padding-left: 15px;
+            padding-left: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-details ul li:hover {
+            transform: translateX(10px);
         }
 
         .product-details ul li::before {
-            content: "•";
+            content: "✓";
             color: #ff0000;
-            font-size: 18px;
+            font-size: 20px;
             position: absolute;
             left: 0;
             top: 0;
         }
 
-        .social-icons {
-            padding-top: 10px;
-            margin-top: 10px;
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #ff0000, transparent);
+            margin: 25px 0;
+        }
+
+        .enquire-button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
             display: flex;
+            align-items: center;
             gap: 10px;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
         }
 
-        .social-icons a img {
-            width: 50px;
-            height: 50px;
+        .enquire-button:hover {
+            background: #e50000;
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
         }
 
-        .social-icons a {
+        .enquire-button a {
             text-decoration: none;
-            color: #f5f5f5;
+            color: white;
         }
 
-        .social-icons button {
-            background-color: #ff0000;
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: #fff;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-section h4::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background: #ff0000;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff0000;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            color: #fff;
+        }
+
+        .social-links a:hover {
+            background: #ff0000;
+            transform: scale(1.2) rotate(360deg);
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-container {
+                justify-content: center;
+                height: 60px;
+            }
+            
+            .hideandseeklogo {
+                height: 50px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.95);
+                width: 100%;
+                height: calc(100vh - 60px);
+                padding: 30px;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+                transition: left 0.4s ease;
+                align-items: center;
+                z-index: 999;
+                backdrop-filter: blur(5px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu-footer {
+                margin-top: auto;
+                width: 100%;
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+            }
+            
+            main {
+                padding: 70px 0 40px;
+            }
+            
             .product-container {
                 flex-direction: column;
+                width: 95%;
+                margin: 10px auto;
             }
-
-            .product-image, .product-details {
-                flex: none;
+            
+            .product-image, 
+            .product-details {
                 width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hideandseeklogo {
+                height: 40px;
+            }
+            
+            .product-details h2 {
+                font-size: 24px;
+            }
+            
+            .product-details h3 {
+                font-size: 18px;
+            }
+            
+            .enquire-button {
+                padding: 12px 20px;
             }
         }
     </style>
@@ -119,70 +434,136 @@
     <header>
         <nav class="navbar" aria-label="Main Navigation">
             <div class="container nav-container">
-                <img class="hideandseeklogo" src="images/Hide_and_seek_security_solutions-removebg-preview.png" alt="hide and seek logo">
-                <h1 class="logo"><a href="#home"></a></h1>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <img class="hideandseeklogo" src="images/hs new logo.png" alt="Hide and Seek Logo">
                 
                 <ul class="nav-links">
                     <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
                     <li><a href="index.html"><i class="fa-solid fa-camera"></i> Products</a></li>
                     <li><a href="index.html"><i class="fa-solid fa-shield-alt"></i> Solutions</a></li>
-                    <img src="images/made in india logo.png" alt="Made in India">
+                    <li><img src="images/made in india logo.png" alt="Made in India"></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="product-container">
-        <div class="product-image cctv1">
-            <img src="images/cctv_2.png" alt="CP Plus Camera - 5MP IR Network Dome Camera" loading="lazy" style="width: 100%; height: auto;">
-        </div>
-        <div class="product-details">
-            <h2>5MP DOME CAMERA</h2>
-            <!-- <h3>5MP DOME CAMERA - 30Mtr.</h3> -->
-            <ul>
-                <li>IP and AHD cameras</li>
-                <li>Max. 5MP (2592 x 1944)@25fps</li>
-                <li>Crystal Led</li>
-                <li>3.6mm Lens</li>
-                <li>4 led smile dome</li>
-                <li>Warmlight IR Range of 25 Mtr</li>
-            </ul>
-            <hr>
-            <div class="product-actions">
-                <div class="social-icons">
-                    <button style="background:#f11c1c; border-radius: 5px; color: white; padding: 10px 20px; border: none; cursor: pointer; transition: background 0.3s, box-shadow 0.3s;">
-                        <a href="tel:+91 9756351000" style="text-decoration: none; color: white;"><i class="fa-solid fa-phone"></i> Enquire Now</a>
+
+    <main>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="images/cctv_2.png" alt="CP Plus Camera - 5MP IR Network Dome Camera" loading="lazy">
+            </div>
+            <div class="product-details">
+                <h2>HS-CNV-DA51PL3</h2>
+                <h3>5MP IR DOME CAMERA - 30Mtr.</h3>
+                <ul>
+                    <li>IP and AHD cameras</li>
+                    <li>Max. 5MP (2592 x 1944)@25fps</li>
+                    <li>Crystal Led</li>
+                    <li>3.6mm Lens</li>
+                    <li>4 led smile dome</li>
+                    <li>Warmlight IR Range of 25 Mtr</li>
+                </ul>
+                <hr>
+                <div class="product-actions">
+                    <button class="enquire-button">
+                        <a href="tel:+91 9756351000"><i class="fa-solid fa-phone"></i> Enquire Now</a>
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <section class="footer-section">
-                    <h4 class="contact">Contact</h4>
-                    <p>24/7 Support: <a href="tel:+91 9756351000"><i class="fa-solid fa-phone"></i> +91 97563 51000</a></p>
-                    <p>Email: <a href="mailto:hidenseekcctv@gmail.com">hidenseekcctv@gmail.com</a></p>
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-phone"></i> 24/7 Support: <a href="tel:+91 9756351000">+91 97563 51000</a></p>
+                    <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:hidenseekcctv@gmail.com">hidenseekcctv@gmail.com</a></p>
+                </section>
+                
+                <section class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </section>
+                
+                <section class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="#">About Us</a></p>
+                    <p><a href="#">Our Products</a></p>
+                    <p><a href="#">Security Solutions</a></p>
+                    <p><a href="#">Contact Us</a></p>
                 </section>
             </div>
-            <section class="footer-section">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </section>
-        </div>
-        <!-- Cookie Notice -->
-        <div class="cookie-notice">
-            <p>We value your privacy. This website uses cookies to enhance your browsing experience, analyze site traffic,
-                and improve our services. By clicking 'Accept,' you agree to our use of cookies as outlined in our Privacy Policy.
-            </p>
-            <button class="accept-cookies">Accept All Cookies</button>
+            
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid #444; margin-top: 20px;">
+                <p>© 2025 Hide & Seek Security Solutions. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Add footer content for mobile menu
+            if (navLinks.classList.contains('active')) {
+                if (!navLinks.querySelector('.mobile-menu-footer')) {
+                    const footerDiv = document.createElement('div');
+                    footerDiv.className = 'mobile-menu-footer';
+                    
+                    // Social links
+                    const socialLinks = `
+                        <div class="mobile-social-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 15px;">
+                            <a href="#" style="color: #333;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" style="color: #333;"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: #333;"><i class="fab fa-instagram"></i></a>
+                            <a href="#" style="color: #333;"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    `;
+                    
+                    // Copyright notice
+                    const copyright = `
+                        <p style="text-align: center; color: #666; font-size: 14px;">
+                            © 2025 Hide & Seek Security Solutions. All Rights Reserved.
+                        </p>
+                    `;
+                    
+                    footerDiv.innerHTML = socialLinks + copyright;
+                    navLinks.appendChild(footerDiv);
+                }
+            } else {
+                // Remove mobile footer when menu is closed
+                const mobileFooter = navLinks.querySelector('.mobile-menu-footer');
+                if (mobileFooter) {
+                    mobileFooter.remove();
+                }
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                
+                // Remove mobile footer
+                const mobileFooter = navLinks.querySelector('.mobile-menu-footer');
+                if (mobileFooter) {
+                    mobileFooter.remove();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
