@@ -312,6 +312,19 @@
     </div>
   </footer>
 
+<!--   Scrolling  -->
+  <div class="sidebar">
+        <a href="tel:+91 97563 51000" class="sidebar-btn">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/+91 97563 51000" class="sidebar-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="sidebar-btn" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.mobile-menu-toggle');
@@ -388,6 +401,15 @@
           mobileMenu.classList.remove('active');
         });
       });
+
+      // Scrolling
+
+      function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
       // Cookie notice functionality
       const cookieNotice = document.querySelector('.cookie-notice');
