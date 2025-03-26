@@ -312,120 +312,167 @@
     </div>
   </footer>
 
-<!--   Scrolling  -->
+<!-- Scrolling -->
+
   <div class="sidebar">
-        <a href="tel:+91 97563 51000" class="sidebar-btn">
-            <i class="fas fa-phone"></i>
-        </a>
-        <a href="https://wa.me/+91 97563 51000" class="sidebar-btn">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <button class="sidebar-btn" onclick="scrollToTop()">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-    </div>
+    <a href="tel:+919756351000" class="sidebar-btn" aria-label="Call us">
+        <i class="fas fa-phone"></i>
+    </a>
+    <button class="sidebar-btn whatsapp" aria-label="WhatsApp us">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+    <button class="sidebar-btn scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const navMenu = document.getElementById('nav-menu');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Selectors
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-menu');
+  const whatsappBtn = document.querySelector('.sidebar-btn.whatsapp');
+  const scrollTopBtn = document.querySelector('.sidebar-btn.scroll-top');
+  const cookieNotice = document.querySelector('.cookie-notice');
+  const acceptCookies = document.querySelector('.accept-cookies');
 
-      // Mobile menu toggle from original index.html
-      mobileMenu.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-      });
-
-      // Enhanced mobile menu functionality from cctv1.html
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-          navLinks.classList.toggle('active');
-          
-          // Add footer content for mobile menu
-          if (navLinks.classList.contains('active')) {
-            if (!navLinks.querySelector('.mobile-menu-footer')) {
-              const footerDiv = document.createElement('div');
-              footerDiv.className = 'mobile-menu-footer';
-              
-              // Social links
-              const socialLinks = `
-                <div class="mobile-social-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 15px;">
-                  <a href="#" style="color: #333;"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#" style="color: #333;"><i class="fab fa-twitter"></i></a>
-                  <a href="#" style="color: #333;"><i class="fab fa-instagram"></i></a>
-                  <a href="#" style="color: #333;"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-              `;
-              
-              // Copyright notice
-              const copyright = `
-                <p style="text-align: center; color: #666; font-size: 14px;">
-                  © 2025 Hide & Seek Security Solutions. All Rights Reserved.
-                </p>
-              `;
-              
-              footerDiv.innerHTML = socialLinks + copyright;
-              navLinks.appendChild(footerDiv);
-            }
-          } else {
-            // Remove mobile footer when menu is closed
-            const mobileFooter = navLinks.querySelector('.mobile-menu-footer');
-            if (mobileFooter) {
-              mobileFooter.remove();
-            }
-          }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-          const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
-          if (!isClickInside && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            
-            // Remove mobile footer
-            const mobileFooter = navLinks.querySelector('.mobile-menu-footer');
-            if (mobileFooter) {
-              mobileFooter.remove();
-            }
-          }
-        });
-      }
-
-      // Close menu when clicking on a link
-      const navLinksItems = document.querySelectorAll('.nav-links a');
-      navLinksItems.forEach(link => {
-        link.addEventListener('click', function() {
-          navMenu.classList.remove('active');
-          mobileMenu.classList.remove('active');
-        });
-      });
-
-      // Scrolling
-
-      function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-      // Cookie notice functionality
-      const cookieNotice = document.querySelector('.cookie-notice');
-      const acceptCookies = document.querySelector('.accept-cookies');
+  // Mobile Menu Functionality
+  function toggleMobileMenu() {
+      const isActive = navLinks.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
       
-      if (!localStorage.getItem('cookiesAccepted')) {
-        cookieNotice.style.display = 'flex';
+      if (isActive) {
+          addMobileFooter();
       } else {
-        cookieNotice.style.display = 'none';
+          removeMobileFooter();
       }
-      
-      acceptCookies.addEventListener('click', function() {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieNotice.style.display = 'none';
+  }
+
+  mobileMenu.addEventListener('click', toggleMobileMenu);
+  menuToggle.addEventListener('click', toggleMobileMenu);
+
+  // Add Mobile Footer
+  function addMobileFooter() {
+      if (!navLinks.querySelector('.mobile-menu-footer')) {
+          const footerDiv = document.createElement('div');
+          footerDiv.className = 'mobile-menu-footer';
+          footerDiv.innerHTML = `
+              <div class="mobile-social-links">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+              <p>© 2025 Hide & Seek Security Solutions. All Rights Reserved.</p>
+          `;
+          navLinks.appendChild(footerDiv);
+      }
+  }
+
+  // Remove Mobile Footer
+  function removeMobileFooter() {
+      const mobileFooter = navLinks.querySelector('.mobile-menu-footer');
+      if (mobileFooter) mobileFooter.remove();
+  }
+
+  // Close Menu on Outside Click
+  document.addEventListener('click', function(event) {
+      const isClickInside = navLinks.contains(event.target) || 
+                          menuToggle.contains(event.target) || 
+                          mobileMenu.contains(event.target);
+      if (!isClickInside && navLinks.classList.contains('active')) {
+          toggleMobileMenu();
+      }
+  });
+
+  // Smooth Scroll for Navigation Links
+  document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+          if (this.hash) {
+              e.preventDefault();
+              scrollToSection(this.hash);
+              toggleMobileMenu();
+          }
       });
-    });
+  });
+
+  // Scroll to Section
+  function scrollToSection(hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+          });
+      }
+  }
+
+  // Scroll to Top
+  function scrollToTop() {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  }
+
+  // Sidebar Visibility
+  window.addEventListener('scroll', function() {
+      const sidebar = document.querySelector('.sidebar');
+      if (window.scrollY > 300) {
+          sidebar.classList.add('visible');
+      } else {
+          sidebar.classList.remove('visible');
+      }
+  });
+
+  // Sidebar Button Handlers
+  if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open('https://wa.me/+919756351000', '_blank');
+      });
+  }
+
+  if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', scrollToTop);
+  }
+
+  // Section Visibility Animation
+  function handleSectionVisibility() {
+      const sections = document.querySelectorAll('section');
+      const windowHeight = window.innerHeight;
+
+      sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop < windowHeight - 100) {
+              section.classList.add('visible');
+          }
+      });
+  }
+
+  window.addEventListener('scroll', handleSectionVisibility);
+  window.addEventListener('load', handleSectionVisibility);
+
+  // Cookie Notice
+  if (!localStorage.getItem('cookiesAccepted')) {
+      cookieNotice.style.display = 'flex';
+  } else {
+      cookieNotice.style.display = 'none';
+  }
+
+  if (acceptCookies) {
+      acceptCookies.addEventListener('click', function() {
+          localStorage.setItem('cookiesAccepted', 'true');
+          cookieNotice.classList.add('hidden');
+          setTimeout(() => cookieNotice.style.display = 'none', 300);
+      });
+  }
+});
   </script>
 </body>
 </html>
