@@ -652,15 +652,21 @@ header {
     transform: scale(1.05);
 }
 
-
+/* Sidebar Enhancements */
 .sidebar {
     position: fixed;
-    right: 20px;
-    top: 80%;
+    right: -70px; /* Start off-screen */
+    top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.visible {
+    right: 20px;
 }
 
 .sidebar-btn {
@@ -671,16 +677,104 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 50%;
     text-decoration: none;
     font-size: 24px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 .sidebar-btn:hover {
-    background-color: #555;
+    background-color: #e50000;
+    transform: scale(1.1) rotate(360deg);
+}
+
+.sidebar-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-btn:hover::after {
+    transform: scale(1);
+}
+
+.sidebar-btn.whatsapp {
+    background-color: #25D366;
+}
+
+.sidebar-btn.whatsapp:hover {
+    background-color: #20b858;
+}
+
+.sidebar-btn.scroll-top {
+    background-color: #4caf50;
+}
+
+.sidebar-btn.scroll-top:hover {
+    background-color: #45a049;
+}
+
+/* Smooth section transitions */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced mobile menu */
+.nav-links {
+    transition: left 0.4s ease, opacity 0.3s ease;
+}
+
+.nav-links.active {
+    left: 0;
+    opacity: 1;
+}
+
+.mobile-menu-footer {
+    margin-top: auto;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.mobile-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.mobile-social-links a {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-social-links a:hover {
+    transform: scale(1.2);
+}
+
+/* Cookie notice animation */
+.cookie-notice {
+    transition: opacity 0.3s ease;
+}
+
+.cookie-notice.hidden {
+    opacity: 0;
 }
 
 /* Responsive Design */
