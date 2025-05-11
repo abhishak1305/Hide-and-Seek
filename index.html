@@ -168,42 +168,121 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFC76ZL2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  
-  <header>
-    <nav class="navbar" aria-label="Main Navigation">
-      <div class="container nav-container">
-        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-        <div class="logo-container">
-          <img class="hideandseeklogo" src="images/hs new logo.png" alt="hide and seek logo">
-          <h1 class="logo"><a href="#home"></a></h1>
-        </div>
-        
-        <div class="menu-toggle" id="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        
-        <ul class="nav-links" id="nav-menu">
-          <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
-          <li><a href="#products"><i class="fa-solid fa-camera"></i> Products</a></li>
-          <li><a href="#solutions"><i class="fa-solid fa-shield-alt"></i> Solutions</a></li>
-          <li class="made-in-india"><img src="images/made in india logo.png" alt="Made in India"></li>
-        </ul>
+    
+<header>
+  <nav class="navbar" aria-label="Main Navigation">
+    <div class="container nav-container">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="menu-icon"></span>
+      </button>
+      
+      <!-- Logo Section -->
+      <div class="logo-container">
+        <a href="#home" class="logo-link">
+          <img class="hideandseeklogo" src="images/hs new logo.png" alt="Hide & Seek Security Solutions Logo">
+          <!-- <span class="logo-text">Hide & Seek</span> -->
+        </a>
       </div>
-    </nav>
-  </header>
+      
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#home" class="nav-link"><i class="fa-solid fa-house nav-icon"></i> <span>Home</span></a></li>
+        <li><a href="#products" class="nav-link"><i class="fa-solid fa-camera nav-icon"></i> <span>Products</span></a></li>
+        <li><a href="#solutions" class="nav-link"><i class="fa-solid fa-shield-alt nav-icon"></i> <span>Solutions</span></a></li>
+        <li class="made-in-india">
+          <img src="images/made in india logo.png" alt="Made in India" class="india-logo">
+          <!-- <span class="india-text">Made in India</span> -->
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+</header>
 
   <main>
-    <section id="home" class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <!-- Content goes here (e.g., text, buttons) -->
+      <!-- Advanced Hero Section with Slider -->
+  <section class="hero">
+    <div class="slider" id="hero-slider">
+      <!-- Floating background elements -->
+      <div class="floating-element element-1"></div>
+      <div class="floating-element element-2"></div>
+      <div class="floating-element element-3"></div>
+      
+      <!-- Slide 1 -->
+      <div class="slide slide-1 active">
+        <div class="slide-content">
+          <h2>Reliable CCTV</h2>
+          <p>Browse our range of affordable and reliable CCTV cameras, ideal for residential spaces and businesses. Simple setup, solid protection.</p>
+
+          <div class="btn-container">
+            <!-- <a href="#products" class="btn">
+              <i class="fa-solid fa-camera"></i> Products
+              <i class="fas fa-shield-alt"></i> Explore Services
+            </a> -->
+            <a href="#products" class="btn btn-outline">
+              <i class="fa-solid fa-camera"></i> Products
+            </a>
+          </div>
         </div>
       </div>
-    </section>
+      
+      <!-- Slide 2 -->
+      <div class="slide slide-2">
+        <div class="slide-content">
+          <h2>Installation & Support Services</h2>
+          <p>We offer easy installation and ongoing support for all our CCTV products. Let us help you secure your home or shop with confidence.</p>
+
+         <div class="btn-container">
+            <!-- <a href="#solutions" class="btn">
+              <i class="fas fa-camera"></i> View Solutions
+            </a> -->
+            <a href="#solutions" class="btn btn-outline">
+              <i class="fa-solid fa-shield-alt"></i> Solutions
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 3 -->
+      <div class="slide slide-3">
+        <div class="slide-content">
+          <h2>Get in Touch With Us</h2>
+          <p>Have questions or need a quote? Reach out to our team for assistance with choosing the right CCTV system for your needs.</p>
+          <div class="btn-container">
+            <!-- <a href="#contact" class="btn">
+              <i class="fas fa-phone-alt"></i> Contact Us
+            </a> -->
+            <a href="tel:+919756351000" class="btn btn-outline">
+              <i class="fa-solid fa-phone"></i> Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slider controls -->
+      <button class="slider-btn prev-btn" id="prev-slide" aria-label="Previous slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-btn next-btn" id="next-slide" aria-label="Next slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      
+      <!-- Slide indicators -->
+      <div class="slider-controls">
+        <span class="slider-dot active" data-slide="0" aria-label="Go to slide 1"></span>
+        <span class="slider-dot" data-slide="1" aria-label="Go to slide 2"></span>
+        <span class="slider-dot" data-slide="2" aria-label="Go to slide 3"></span>
+      </div>
+      
+      <!-- Slide counter -->
+      <div class="slide-counter">
+        <span class="current">01</span>
+        <span>/</span>
+        <span>03</span>
+      </div>
+    </div>
+  </section>
 
     <section class="features">
       <div class="container">
@@ -265,6 +344,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <article class="product-card">
               <div class="product-image">
                 <img src="images/cctv_4.png" alt="3MP AHD DOME CCTV Camera" loading="lazy"/>
+              </div>
+              <div class="product-details">
+                <h3>3MP AHD AUDIO CCTV Camera</h3>
+                <p class="product-delivery">Made in Bharat</p>
+              </div>
+            </article>
+          </a>
+          <a href="cctv5.html">
+            <article class="product-card">
+              <div class="product-image">
+                <img src="images/cctv5.png" alt="3MP AHD DOME CCTV Camera" loading="lazy"/>
+              </div>
+              <div class="product-details">
+                <h3>3MP AHD AUDIO CCTV Camera</h3>
+                <p class="product-delivery">Made in Bharat</p>
+              </div>
+            </article>
+          </a>
+          <a href="cctv6.html">
+            <article class="product-card">
+              <div class="product-image">
+                <img src="images/cctv6.png" alt="3MP AHD DOME CCTV Camera" loading="lazy"/>
               </div>
               <div class="product-details">
                 <h3>3MP AHD AUDIO CCTV Camera</h3>
@@ -584,6 +685,156 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('#hero-slider .slide');
+      const dots = document.querySelectorAll('.slider-dot');
+      const prevBtn = document.getElementById('prev-slide');
+      const nextBtn = document.getElementById('next-slide');
+      const currentSlideEl = document.querySelector('.slide-counter .current');
+      let currentSlide = 0;
+      let slideInterval;
+      let isAnimating = false;
+      
+      // Format slide number with leading zero
+      function formatSlideNumber(num) {
+        return (num + 1).toString().padStart(2, '0');
+      }
+      
+      function showSlide(index) {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        // Reset all slides
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+        });
+        
+        // Reset all dots
+        dots.forEach(dot => {
+          dot.classList.remove('active');
+          dot.style.animation = 'none';
+          void dot.offsetWidth; // Trigger reflow
+        });
+        
+        // Activate current slide and dot
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        dots[index].style.animation = 'dotProgress 5s linear forwards';
+        
+        // Update slide counter
+        currentSlideEl.textContent = formatSlideNumber(index);
+        
+        currentSlide = index;
+        
+        // Reset animation flag after transition ends
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1200);
+      }
+      
+      function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+      }
+      
+      function prevSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+      }
+      
+      // Initialize slider
+      showSlide(0);
+      
+      // Start auto-sliding
+      function startSlideShow() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+        
+        // Reset dot animation
+        dots[currentSlide].style.animation = 'none';
+        void dots[currentSlide].offsetWidth; // Trigger reflow
+        dots[currentSlide].style.animation = 'dotProgress 5s linear forwards';
+      }
+      
+      startSlideShow();
+      
+      // Pause on hover
+      const slider = document.getElementById('hero-slider');
+      slider.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+      });
+      
+      slider.addEventListener('mouseleave', startSlideShow);
+      
+      // Button controls
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        clearInterval(slideInterval);
+        nextSlide();
+        startSlideShow();
+      });
+      
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        clearInterval(slideInterval);
+        prevSlide();
+        startSlideShow();
+      });
+      
+      // Dot controls
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (index === currentSlide) return;
+          clearInterval(slideInterval);
+          showSlide(index);
+          startSlideShow();
+        });
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          clearInterval(slideInterval);
+          nextSlide();
+          startSlideShow();
+        } else if (e.key === 'ArrowLeft') {
+          clearInterval(slideInterval);
+          prevSlide();
+          startSlideShow();
+        }
+      });
+      
+      // Touch events for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive: true});
+      
+      slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, {passive: true});
+      
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          // Swipe left - next slide
+          clearInterval(slideInterval);
+          nextSlide();
+          startSlideShow();
+        } else if (touchEndX > touchStartX + 50) {
+          // Swipe right - previous slide
+          clearInterval(slideInterval);
+          prevSlide();
+          startSlideShow();
+        }
+      }
+    });
+
+    
   </script>
 </body>
 </html>
